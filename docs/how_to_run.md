@@ -9,6 +9,8 @@ These are the steps we will be following:
 5.  Install JAX
 6.  Connect to Google Colab
 
+&nbsp;  
+
 ## # 1\. Install Anaconda
 
 First, we will install Anaconda, which is a distribution platform for data science. You can also install Jupyter on Python directly, but Anaconda makes our life easier by creating different environments and managing package installation for Python.
@@ -17,11 +19,15 @@ Download: [Anaconda | Anaconda Distribution](https://www.google.com/url?q=https:
 
 After we click the “Download” button on the website, we get a dialog telling us to install Anaconda Nucleus. You can ignore that:
 
+&nbsp;  
 ![](images/image10.png)
+&nbsp;  
 
 The installation process is non-eventful except for a checkbox, enabled by default, which sets Anaconda as your default Python:
 
+&nbsp;  
 ![](images/image1.png)
+&nbsp;  
 
 I left it enabled because I had not installed Python. Make sure it’s what you want before continuing.
 
@@ -41,11 +47,13 @@ After agreeing to the terms of the cuDNN license agreement, download the ZIP fil
 
 Note: Write down the version of cuDNN you’re installing; you’ll need it to install JAX.
 
-The ZIP file has no executable; it is meant to be copied to your CUDA directory. Mine was at `C:\\Program Files\\NVIDIA GPU Computing Toolkit\\CUDA\\v11.6`
+The ZIP file has no executable; it is meant to be copied to your CUDA directory. Mine was at `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.6`
 
 Extract the files into that directory, making sure the files in each subdirectory match the existing CUDA subdirectories, so files in `/bin/` go into `/bin/`, etc:
 
+&nbsp;  
 ![](images/image7.png)
+&nbsp;  
 
 ## 4\. Install Jupyter
 
@@ -53,7 +61,9 @@ We will open the Anaconda Navigator from the Start Menu. It may open about three
 
 Anaconda has Jupyter preinstalled, but we will create a new conda environment, so we will need to install it again.
 
+&nbsp;  
 ![](images/image6.png)
+&nbsp;  
 
 Open the CMD.exe Prompt. As you can see, we are inside a conda environment, specifically, the base one.
 
@@ -67,13 +77,17 @@ Now, after we install the new environment and kernel, we close the CMD prompt.
 
 We go back to Anaconda Navigator and select our newly created environment on the dropdown box:
 
+&nbsp;  
 ![](images/image11.png)
+&nbsp;  
 
 The Jupyter tile now says “Install” instead of launch. We click on the button to install, and then launch Jupyter.
 
 To test we have the GPU enabled, click on New on the upper right corner, and select your GPU profile:
 
+&nbsp;  
 ![](images/image8.png)
+&nbsp;  
 
 Run this code in the notebook:
 
@@ -87,7 +101,9 @@ else:
 
 It should result in this:
 
+&nbsp;  
 ![](images/image2.png)
+&nbsp;  
 
 ## 5\. Install JAX
 
@@ -121,9 +137,9 @@ print("Devices: ", jax.devices())
 
 It should result in this:
 
-
-
+&nbsp;  
 ![](images/image3.png)
+&nbsp;  
 
 ## 6\. Connect to Google Colab
 
@@ -143,13 +159,19 @@ Once you run the command successfully, you will see something like this:
 
 ![](images/image4.png)
 
+&nbsp;  
 We will use that URL (localhost or 127.0…) in Colab.
+&nbsp;  
 
 Go to Colab, click on Connect, then Local runtime, and paste the URL.
 
+
+&nbsp;  
 ![](images/image5.png)
 
-![](images/image9.png)
+<img src="images/image9.png" width="600">
+&nbsp;  
+
 
 Click Connect. Colab should work as usual. If you haven’t done so already, you will need to install matplotlib and other libraries in your gpu conda environment. You can do so on the CMD prompt or directly from colab, like this:
 
@@ -165,6 +187,6 @@ Note: You still have access to your local files. If you’re not sure where Cola
 !dir
 ```
 
-To see what directory you’re in. It’s typically your C:\\users\\\[yourUser\] directory.
+To see what directory you’re in. It’s typically your `C:\users\[yourUser]` directory.
 
 To work on Colab, place your data files in a suitable subdirectory and reference it in your code.
