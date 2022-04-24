@@ -1,4 +1,4 @@
-**This is an original guide written by by William Kaminski, Pedro Pacheco, and Juan Lopez.**
+### This is an original guide written by by William Kaminski, Pedro Pacheco, and Juan Lopez.
 
 Note: This guide is directed to people who have an NVIDIA GPU compatible with CUDA, running Windows.
 
