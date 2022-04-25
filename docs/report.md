@@ -30,10 +30,10 @@ Anwar, M T, et al. “Rainfall Prediction Using Extreme Gradient Boosting.” *J
 
 Kunicki, Aleksander. “Rain_regression.” *Kaggle.com*, www.kaggle.com/code/aleksanderkunicki/rain-regression.
 
-Monogioudis, Pantelis. “Boosting — Introduction to Data Science.” *Pantelis.github.io*, pantelis.github.io/data-science/aiml-common/lectures/ensemble/boosting/_index.html.
+Monogioudis, Pantelis. “Boosting — Introduction to Data Science.” *Pantelis.github.io*, [pantelis.github.io/data-science/aiml-common/lectures/ensemble/boosting/_index.html](pantelis.github.io/data-science/aiml-common/lectures/ensemble/boosting/_index.html).
 
 National Centers for Environmental Information. “Next Generation Weather Radar.” *National Centers for Environmental Information (NCEI)*, 22 Sept. 2020, www.ncei.noaa.gov/products/radar/next-generation-weather-radar.
 
-National Oceanic and Atmospheric Administration. “NCEP Meteorological Assimilation Data Ingest System (MADIS).” *Madis.ncep.noaa.gov*, madis.ncep.noaa.gov/.
+National Oceanic and Atmospheric Administration. “NCEP Meteorological Assimilation Data Ingest System (MADIS).” *Madis.ncep.noaa.gov*, [madis.ncep.noaa.gov/](madis.ncep.noaa.gov/).
 
-Sim, Aaron. “Estimating Rainfall from Weather Radar Readings Using Recurrent Neural Networks – Aaron Sim.” *Archive.org*, 21 Apr. 2016, web.archive.org/web/20160421003010/simaaron.github.io/Estimating-rainfall-from-weather-radar-readings-using-recurrent-neural-networks/.
+Sim, Aaron. “Estimating Rainfall from Weather Radar Readings Using Recurrent Neural Networks – Aaron Sim.” *Archive.org*, 21 Apr. 2016, [web.archive.org/web/20160421003010/simaaron.github.io/Estimating-rainfall-from-weather-radar-readings-using-recurrent-neural-networks/](web.archive.org/web/20160421003010/simaaron.github.io/Estimating-rainfall-from-weather-radar-readings-using-recurrent-neural-networks/).
