@@ -1,6 +1,8 @@
 ### This is an original guide written by by William Kaminski, Pedro Pacheco, and Juan Lopez.
 
-Note: This guide is directed to people who have an NVIDIA GPU compatible with CUDA, running Windows.
+# How to install Jupyter, JAX on GPU for Colab local runtime
+
+Note: This guide is directed to people who have an NVIDIA GPU compatible with **CUDA**, running **Windows**.
 
 These are the steps we will be following:
 
