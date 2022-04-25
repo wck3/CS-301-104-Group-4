@@ -31,12 +31,10 @@ There was a variety of filtering that we needed to do in order to make the data 
 
 There were two main issues with the data that needed to be addressed. First, there were many NaN entries in our features. These entries were either not recorded or the observations were so small that they could be deemed insignificant. NaN is considered a null value, so in order to make the data usable we replaced all NaN entries with zeros. Now we were ready to finally plot the data for visual analysis.
 
-(insert image one here)
 ![image](images/data_raw.png)
 
 Plotting the unique values, you can see the extreme outliers that were present in the provided dataset. These could have skewed our predictions drastically, so we needed to find a way to remove them. We took the mean of the expected values and found it to be approximately 108.626.  92% of the measurements were below 106mm, so we removed all values greater than 106. This created a much better correlated dataset than we had previously.
 
-(insert image 2)
 ![image](images/data_cleaned.png)
 With preprocessing finished, we took a smaller partition of the training dataset to experiment with in order to save resources and time. The data was split into training labels and features as well as testing labels and features, all from the training set. These partitions will become important for our chosen method of prediction, Gradient Boost.
 ## Methods
@@ -44,7 +42,6 @@ After analyzing the data, we knew that we were dealing with a regression problem
 
 Gradient Boosting is an ensemble method, or in other words, a series of “weak” learners that compute predictions which are combined to find one final prediction. There are a variety of ensemble methods including Random Forests, Gradient Boost, AdaBoost, etc.. Gradient Boosting is a method of boosting where a model is built and another model is trained based on the errors, or residuals of the previous model. Gradient Boost is different from other boosting methods as instead of adjusting weights for each new model, the new model is fit to the predecessor’s residuals. 
 
-(insert image one)
 ![image](images/residuals.png)
 
 The residuals are calculated using the derivative, or gradient of the mean-squared error. This gradient is calculated with respect to the previous prediction. The initial weight is the average of the sum of all of the observed measurements. From here, the first decision tree can be created by finding the errors of the observed measurement and this “predicted” measurement. The features of the data become nodes in the tree, and the leafs become these error values. The final prediction of the tree multiplied by the learning rate is added to the previous prediction until the number of trees (estimators) has been reached. This occurs for each measurement in the dataset until it is complete.
@@ -52,9 +49,21 @@ The residuals are calculated using the derivative, or gradient of the mean-squar
 We felt that using this method was best for this situation for a few reasons. Gradient boosting is perfect for data with many features and rows. The large amount of features allows for more variety in the decision tree estimators. Our goal was to predict a single scalar value. Hence, Gradient Boost’s sequential method of learning from past estimators made it seem like a good choice for precision data such as the kind we were working with. Gradient boosting also benefits from flexibility as it can be adapted to a variety of loss functions. In this case, we used mean squared error as our loss function. We used a combination of Jax and Sci-Kit learn in our Gradient Boost algorithm. Jax was used for computing the mean squared error, the gradient, and the mean absolute error which we used to measure the accuracy of our model.  We used Sci-Kit-Learn to create regression trees and help compute our predictions. 
 
 ## Experiments
-(insert table here)
+####JAX
+Our own mean absolute error function could incorporate JAX in three different ways: using the JAX absolute value function, JAX numpy arrays and jax.jit(). Since the alternative is not using those features, there are eight possible combinations. Not all of them were feasible as they caused both our own computers and Colab virtual machines to crash. 
+
+These are the results:
+
 ![image](images/jax_chart.png)
+
+**Hyperparameters
+In order to further improve our prediction, we experimented with different hyperparameters. When designing the model, our initial parameters were a learning rate of 0.1 and 100 total estimators. We started by changing the learning rate to 0.001. This yielded extreme underfitting of the model. We think that making the learning rate so small and summing the residuals created extremely small prediction values. 
+In order to try to circumvent this, we increased the number of estimators from 100 to 150 while keeping the learning rate of 0.001. This resulted in a better fit, but the performance of these parameters was still very poor compared to our initial results. We concluded that this learning rate was too small for this model, so we decided to increase the learning rate to 0.01 and increase the number of estimators to 250. We found this model to fit the best so far. 
+We thought if we increased the number of estimators once again, we may have even better results. We tried increasing the number of estimators to 400, but there was little to no improvement.. Increasing the estimators proved to be more costly without improving the results, thus yielding the optimized hyperparameters. These hyperparameters were a learning rate of 0.01 and 250 estimators. 
+
 ## Conclusion
+
+The use of JAX produced mixed results. In some cases, it optimized the running time. In others, it made it worse, or even made the computations fail completely altogether. However, it was very useful in the automatic calculation of gradients. Our predictor was able to predict the precipitation amount with a Mean Absolute Error of around 4.24 indicating our predictors were quite accurate. These numbers confirm the accuracy of our model and thus proves success in our mission of accurately predicting the precipitation amounts given the Kaggle data. Farmers can now rest assured knowing the weather for tomorrow, today.
 
 ## References
 Anwar, M T, et al. “Rainfall Prediction Using Extreme Gradient Boosting.” *Journal of Physics: Conference Series*, vol. 1869, no. 1, 1 Apr. 2021, 10.1088/1742-6596/1869/1/012078.
