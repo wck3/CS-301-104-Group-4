@@ -1,6 +1,8 @@
 # Predicting Rainfall Using Gradient Boosting and Regression
 ## William Kaminski, Juan Lopez, Pedro Pacheco
 
+See our code [here](Gradient_Boost_Rainfall_Prediction.ipynb).
+
 ## Abstract
 Our team focused on tackling the plight farmers face of inaccurate precipitation predictions, which could cause economic and emotional hardship. By increasing the accuracy of hourly rainfall predictions, we can help improve the agricultural harvest of our users. By increasing the quality of harvest, revenue of farmers could improve. Our problem focuses on maximizing the accuracy of these predictions with polarimetric radar measurements provided by the Kaggle competition, How Much Did It Rain? II. By using the polarimetric radar measurements collected, our team was able to generate accurate weather predictions with pre-collected data using Gradient Boost. 
 
