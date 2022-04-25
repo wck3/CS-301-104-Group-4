@@ -36,6 +36,7 @@ There were two main issues with the data that needed to be addressed. First, the
 Plotting the unique values, you can see the extreme outliers that were present in the provided dataset. These could have skewed our predictions drastically, so we needed to find a way to remove them. We took the mean of the expected values and found it to be approximately 108.626.  92% of the measurements were below 106mm, so we removed all values greater than 106. This created a much better correlated dataset than we had previously.
 
 ![image](images/data_cleaned.png)
+
 With preprocessing finished, we took a smaller partition of the training dataset to experiment with in order to save resources and time. The data was split into training labels and features as well as testing labels and features, all from the training set. These partitions will become important for our chosen method of prediction, Gradient Boost.
 ## Methods
 After analyzing the data, we knew that we were dealing with a regression problem. Our goal was to predict the "expected" rainfall based on the given features and provide a predicted quantity. Given the large amount of features, the large dataset, and the very noisy expected values we knew something as simple as linear regression would not be feasible here. The dataset had 21 features so with such a large complexity we looked into methods involving decision trees and ensemble methods. Our method of choice for solving this problem ended up being Gradient Boosting.
@@ -49,14 +50,16 @@ The residuals are calculated using the derivative, or gradient of the mean-squar
 We felt that using this method was best for this situation for a few reasons. Gradient boosting is perfect for data with many features and rows. The large amount of features allows for more variety in the decision tree estimators. Our goal was to predict a single scalar value. Hence, Gradient Boost’s sequential method of learning from past estimators made it seem like a good choice for precision data such as the kind we were working with. Gradient boosting also benefits from flexibility as it can be adapted to a variety of loss functions. In this case, we used mean squared error as our loss function. We used a combination of Jax and Sci-Kit learn in our Gradient Boost algorithm. Jax was used for computing the mean squared error, the gradient, and the mean absolute error which we used to measure the accuracy of our model.  We used Sci-Kit-Learn to create regression trees and help compute our predictions. 
 
 ## Experiments
-####JAX
+**JAX**
+
 Our own mean absolute error function could incorporate JAX in three different ways: using the JAX absolute value function, JAX numpy arrays and jax.jit(). Since the alternative is not using those features, there are eight possible combinations. Not all of them were feasible as they caused both our own computers and Colab virtual machines to crash. 
 
 These are the results:
 
 ![image](images/jax_chart.png)
 
-**Hyperparameters
+**Hyperparameters**
+
 In order to further improve our prediction, we experimented with different hyperparameters. When designing the model, our initial parameters were a learning rate of 0.1 and 100 total estimators. We started by changing the learning rate to 0.001. This yielded extreme underfitting of the model. We think that making the learning rate so small and summing the residuals created extremely small prediction values. 
 In order to try to circumvent this, we increased the number of estimators from 100 to 150 while keeping the learning rate of 0.001. This resulted in a better fit, but the performance of these parameters was still very poor compared to our initial results. We concluded that this learning rate was too small for this model, so we decided to increase the learning rate to 0.01 and increase the number of estimators to 250. We found this model to fit the best so far. 
 We thought if we increased the number of estimators once again, we may have even better results. We tried increasing the number of estimators to 400, but there was little to no improvement.. Increasing the estimators proved to be more costly without improving the results, thus yielding the optimized hyperparameters. These hyperparameters were a learning rate of 0.01 and 250 estimators. 
