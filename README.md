@@ -8,4 +8,5 @@ As an introductory background reading we have the aforementioned Kaggle competit
 With these models, we aim to improve the quality of agriculture, along with providing information that can benefit both farmers and society. The lack of precipitation caused half a decade of drought in the Dust Bowl, and our data, prediction and metrics can help continue to prevent such a crippling famine. Water Insight will not only help farmers, but society as a whole. With our calculations, together, we can create a better agricultural outcome in order to better society as a whole. Are you ready to revolutionize agriculture with us? 
 
 [Our code in Colab](https://colab.research.google.com/drive/1KOFCpROsUotxH-QpNbVJEj1JkIXEVYIN#scrollTo=j5b9z2BdnOht)
+
 [Our project report](docs/report.md)
