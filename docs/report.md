@@ -32,11 +32,12 @@ There was a variety of filtering that we needed to do in order to make the data 
 There were two main issues with the data that needed to be addressed. First, there were many NaN entries in our features. These entries were either not recorded or the observations were so small that they could be deemed insignificant. NaN is considered a null value, so in order to make the data usable we replaced all NaN entries with zeros. Now we were ready to finally plot the data for visual analysis.
 
 (insert image one here)
+![image](images/data_raw.png)
 
 Plotting the unique values, you can see the extreme outliers that were present in the provided dataset. These could have skewed our predictions drastically, so we needed to find a way to remove them. We took the mean of the expected values and found it to be approximately 108.626.  92% of the measurements were below 106mm, so we removed all values greater than 106. This created a much better correlated dataset than we had previously.
 
 (insert image 2)
-
+![image](images/data_cleaned.png)
 With preprocessing finished, we took a smaller partition of the training dataset to experiment with in order to save resources and time. The data was split into training labels and features as well as testing labels and features, all from the training set. These partitions will become important for our chosen method of prediction, Gradient Boost.
 ## Methods
 After analyzing the data, we knew that we were dealing with a regression problem. Our goal was to predict the "expected" rainfall based on the given features and provide a predicted quantity. Given the large amount of features, the large dataset, and the very noisy expected values we knew something as simple as linear regression would not be feasible here. The dataset had 21 features so with such a large complexity we looked into methods involving decision trees and ensemble methods. Our method of choice for solving this problem ended up being Gradient Boosting.
@@ -44,13 +45,15 @@ After analyzing the data, we knew that we were dealing with a regression problem
 Gradient Boosting is an ensemble method, or in other words, a series of “weak” learners that compute predictions which are combined to find one final prediction. There are a variety of ensemble methods including Random Forests, Gradient Boost, AdaBoost, etc.. Gradient Boosting is a method of boosting where a model is built and another model is trained based on the errors, or residuals of the previous model. Gradient Boost is different from other boosting methods as instead of adjusting weights for each new model, the new model is fit to the predecessor’s residuals. 
 
 (insert image one)
+![image](images/residuals.png)
 
 The residuals are calculated using the derivative, or gradient of the mean-squared error. This gradient is calculated with respect to the previous prediction. The initial weight is the average of the sum of all of the observed measurements. From here, the first decision tree can be created by finding the errors of the observed measurement and this “predicted” measurement. The features of the data become nodes in the tree, and the leafs become these error values. The final prediction of the tree multiplied by the learning rate is added to the previous prediction until the number of trees (estimators) has been reached. This occurs for each measurement in the dataset until it is complete.
 
 We felt that using this method was best for this situation for a few reasons. Gradient boosting is perfect for data with many features and rows. The large amount of features allows for more variety in the decision tree estimators. Our goal was to predict a single scalar value. Hence, Gradient Boost’s sequential method of learning from past estimators made it seem like a good choice for precision data such as the kind we were working with. Gradient boosting also benefits from flexibility as it can be adapted to a variety of loss functions. In this case, we used mean squared error as our loss function. We used a combination of Jax and Sci-Kit learn in our Gradient Boost algorithm. Jax was used for computing the mean squared error, the gradient, and the mean absolute error which we used to measure the accuracy of our model.  We used Sci-Kit-Learn to create regression trees and help compute our predictions. 
 
 ## Experiments
-
+(insert table here)
+![image](images/jax_chart.png)
 ## Conclusion
 
 ## References
