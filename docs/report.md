@@ -44,6 +44,7 @@ After analyzing the data, we knew that we were dealing with a regression problem
 Gradient Boosting is an ensemble method, or in other words, a series of “weak” learners that compute predictions which are combined to find one final prediction. There are a variety of ensemble methods including Random Forests, Gradient Boost, AdaBoost, etc.. Gradient Boosting is a method of boosting where a model is built and another model is trained based on the errors, or residuals of the previous model. Gradient Boost is different from other boosting methods as instead of adjusting weights for each new model, the new model is fit to the predecessor’s residuals. 
 
 ![image](images/residuals.png)
+<p align ="center">(Source: “Boosting — Introduction to Data Science.”)<p>
 
 The residuals are calculated using the derivative, or gradient of the mean-squared error. This gradient is calculated with respect to the previous prediction. The initial weight is the average of the sum of all of the observed measurements. From here, the first decision tree can be created by finding the errors of the observed measurement and this “predicted” measurement. The features of the data become nodes in the tree, and the leafs become these error values. The final prediction of the tree multiplied by the learning rate is added to the previous prediction until the number of trees (estimators) has been reached. This occurs for each measurement in the dataset until it is complete.
 
